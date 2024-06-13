@@ -1,42 +1,63 @@
-import type { Component } from 'solid-js';
+import { Component, createSignal, onMount } from 'solid-js';
 
 import styles from './App.module.css';
 import hg_logo from './assets/HG2HQ.png'
 
 const App: Component = () => {
+  // signals/hooks
 
-  const handleClick = () => {
-    displayTextWithAnimation("this is a test of scrolling text");
-  };
-  
+  const [text, setText] = createSignal("Initializing RESOLYTH SITE... Please wait a moment...");
+
+  const mainMenuTextInit = () => {
+    
+    animateText("Initializing RESOLYTH SITE... Please wait a moment...")
+
+    // attach listeners 
+    setTimeout(() => {
+      const mainBox = document.getElementById('mainBox');
+      if (mainBox){
+        mainBox.classList.remove(styles.App)
+        mainBox.offsetWidth; // refloow
+        mainBox.classList.add(styles.mainMenuTransition)
+      }
+    }, 3000);
+ 
+  }
+
+  const showMainMenu = (mainBox:HTMLElement) => {
+    // try to change class of big div to load new anims and clear old ones.
+    mainBox.classList.add(styles.mainMenuTransition)
+  }
+
+  onMount(mainMenuTextInit);
+
   return (
-    <div class={styles.App}>
+    <div class={styles.App} id="mainBox">
       <header class={styles.header}>
         <img src={hg_logo} class={styles.logo} alt="logo" />
-        <p>
-          <code>stuff looks cool like this</code>
-        </p>
+        <div class={styles.container} id="textContainer">
+          {
 
-
-        <p class={styles.animated_text} id="InitializerText"></p>
-      
-          <button onClick={handleClick}>Click me</button> 
-        
+          }
+          <p class={styles.animated_text} id="textBlock" ></p>
+        </div>        
         
       </header>
     </div>
   );
 };
 
-export default App;
-
-function displayTextWithAnimation(text:string) {
-  const textElement = document.createElement('div');
-  textElement.classList.add(styles.animated_text);
-  textElement.textContent = text;
-  const test1 = document.getElementById("InitializerText");
-  if (test1) {
-    test1.innerHTML = '';  // Clear previous text
-    test1.appendChild(textElement);
+function animateText(text:string){
+  const textElement = document.getElementById("textBlock");
+  if (textElement) {
+    textElement.classList.remove(styles.animated_text); 
+    textElement.innerHTML='';
+    textElement.offsetWidth; // reflooooooowwwwww
+    textElement.innerHTML=text;
+    textElement.classList.add(styles.animated_text);
   }
 }
+
+export default App;
+
+

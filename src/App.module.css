@@ -8,13 +8,16 @@
 }
 
 .logo {
+  
   animation: logo-spin infinite 20s linear;
-  height: 30vmin;
+  height: 20vmin;
   pointer-events: none;
+  padding: 3em;
+  justify-content: center;
 }
 
 .header {
-  background-color: #000000;
+  background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,20 +40,44 @@
   }
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+.container{
+  display: inline-flex;
 }
 
 .animated_text {
-  display: inline-block;
+  font-size: 1em;
+  color : red;
+  letter-spacing: 0px;
+  font-family: pc;
+  padding-right: 5px;
+  border-right: 3px red solid;
+  width : 100%;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 0.10em solid white;
-  animation: typing 2s steps(30, end) 1;
-  font-family: pc;
+  animation:
+    typing 1s steps(30),
+    cursor .4s step-end infinite alternate;
+    
 }
+
+.mainMenuTransition {
+  animation:
+    fadeOut 2s
+}
+
+@keyframes cursor {
+  50% {border-color: transparent}
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;} 
+} 
+
+
