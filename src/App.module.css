@@ -1,15 +1,20 @@
+@font-face{
+  font-family: pc;
+  src:url('./assets/pc-9900-v2x.otf');
+}
+
 .App {
   text-align: center;
 }
 
 .logo {
   animation: logo-spin infinite 20s linear;
-  height: 40vmin;
+  height: 30vmin;
   pointer-events: none;
 }
 
 .header {
-  background-color: #282c34;
+  background-color: #000000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -30,4 +35,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animated_text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.10em solid white;
+  animation: typing 2s steps(30, end) 1;
+  font-family: pc;
 }
