@@ -1,12 +1,16 @@
 import { Component, createSignal, onMount } from 'solid-js';
-
+import { Router, Route, useNavigate } from '@solidjs/router'; 
 import styles from './App.module.css';
 import hg_logo from './assets/HG2HQ.png'
+
+// other components
+import MainMenu from './MainMenu';
 
 const App: Component = () => {
   // signals/hooks
 
   const [text, setText] = createSignal("Initializing RESOLYTH SITE... Please wait a moment...");
+  const navigate = useNavigate();
 
   const mainMenuTextInit = () => {
     
@@ -21,29 +25,35 @@ const App: Component = () => {
         mainBox.classList.add(styles.mainMenuTransition)
       }
     }, 3000);
+    
+    setTimeout(() => {
+      navigate('/MainMenu');
+    }, 5000)
+    
  
   }
 
-  const showMainMenu = (mainBox:HTMLElement) => {
-    // try to change class of big div to load new anims and clear old ones.
-    mainBox.classList.add(styles.mainMenuTransition)
-  }
+  // const showMainMenu = (mainBox:HTMLElement) => {
+  //   // try to change class of big div to load new anims and clear old ones.
+  //   mainBox.classList.add(styles.mainMenuTransition)
+  // }
 
   onMount(mainMenuTextInit);
 
   return (
-    <div class={styles.App} id="mainBox">
-      <header class={styles.header}>
-        <img src={hg_logo} class={styles.logo} alt="logo" />
-        <div class={styles.container} id="textContainer">
-          {
 
-          }
-          <p class={styles.animated_text} id="textBlock" ></p>
-        </div>        
-        
-      </header>
-    </div>
+      <div class={styles.App} id="mainBox">
+        <header class={styles.header}>
+          <img src={hg_logo} class={styles.logo} alt="logo" />
+          <div class={styles.container} id="textContainer">
+            {
+
+            }
+            <p class={styles.animated_text} id="textBlock" ></p>
+          </div>        
+        </header>
+      </div>
+   
   );
 };
 
