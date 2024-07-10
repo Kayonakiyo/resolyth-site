@@ -12,19 +12,23 @@ const MainMenu: Component = () => {
           if(welcomeText){
             welcomeText.remove(); // clear this element from dom
           }
-        }, 1500)
+        }, 2500)
     }
 
     onMount(mainMenuTextInit)
 
     return (
-      <Show when={true} fallback={<p>peanis</p>}>
+      <Show when={true} fallback={<p>bloopy</p>}>
         <div class={styles.header} id="main">
           <p class={styles.text} id="welcome_text">Welcome!</p>
           <Show when={check()} fallback={<p class={styles.text}></p>}>
-            <p class={styles.text} id="loaded_text">loaded!</p>
+            <p class={styles.menuText} id="loaded_text">Main Menu</p>
             <div class={styles.screen}>
-              <ol></ol>
+              <ul class={styles.menuText}>
+                <li><a href="google.com">About Me</a></li>
+                <li><a href="Projects">Projects</a></li> 
+                <li>item 3</li> 
+              </ul>
             </div>
           </Show>
         </div>
