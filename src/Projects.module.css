@@ -22,6 +22,33 @@
   background-color: #000; 
 }
 
+.screenvideo {
+  position: absolute; 
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto; 
+  z-index: -100;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.highlight {
+  position: fixed;
+  top : 15%; right : 40%;
+  width: 800px;
+  height : 450px;
+  padding: 3px;
+  border-style: solid;
+  border-color: white;
+  border-width: 3px;
+  color: white;
+  font-family: pc;
+  font-size: calc(16px + 2vmin);
+}
+
 .text {
   font-family: pc;
   font-size: calc(14px + 2vmin);
