@@ -22,16 +22,14 @@ const Projects: Component = () => {
     
     return (
       <Show when={true} fallback={<p>bloopy</p>}>
-        
         <div class={styles.header} id="main">
           <div class={styles.highlight} style={{'border-color':previewBorderColor()}}>
             <img src={projectBigLogo()} style={{'position':'relative','bottom':'-75%'}}/>
+            <video autoplay muted loop class={styles.screenvideo}>
+              <source src="src/assets/wireworks.mp4" type="video/mp4"/>
+            </video>
           </div>
-          <p class={styles.text} id="header_text">This is the projects page.</p>
             <div class={styles.screen}>
-              <video autoplay muted loop >
-                <source src="src/assets/wireworks.mp4"/>
-              </video>
             <ProjectBox visibility="visible" projectNumber={projectNumber()}/>
             </div>
         </div>

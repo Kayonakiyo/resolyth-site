@@ -18,6 +18,7 @@ div > img {
   font-size: calc(10px + 2vmin);
   color: white;
   text-wrap: nowrap;
+  font-weight: bold;
 }
 
 .text2 {
@@ -27,6 +28,7 @@ div > img {
   font-size: calc(10px + 2vmin);
   color: white;
   text-wrap: wrap;
+  font-weight: bold;
 }
 
 
