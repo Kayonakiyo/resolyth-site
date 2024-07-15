@@ -31,7 +31,7 @@
   min-width: 100%; 
   min-height: 100%;
   width: auto; 
-  height: auto; 
+  height: 50vh; 
   z-index: -100;
   background-size: cover;
   overflow: hidden;

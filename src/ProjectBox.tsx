@@ -1,4 +1,4 @@
-import { Component, onMount, createSignal, Show } from 'solid-js';
+import { Component, onMount, createSignal, Show, createEffect } from 'solid-js';
 import styles from './ProjectBox.module.css';
 
 const ProjectBox: Component<{visibility:String, projectNumber:Number}> = (props) => {
@@ -25,7 +25,11 @@ const ProjectBox: Component<{visibility:String, projectNumber:Number}> = (props)
           smallPreview = "src/assets/sdvx_banner.png";
           break;
         case 1 :
-          name = "Project #1";
+          name = "Beatmania IIDX Arcade Controller";
+          color = "#a73baf";
+          color2 = "#5838f3"; 
+          description = "Spin turntables, keep the dance floor hot!"
+          smallPreview = "src/assets/BMIIDX_Banner.png"
           break;
         default :
           name = "Project X";
@@ -38,12 +42,15 @@ const ProjectBox: Component<{visibility:String, projectNumber:Number}> = (props)
       setSmallPreview(smallPreview);
     }
 
-    onMount(projectInit);
+    createEffect(() => {
+      projectInit();
+    }, [props.projectNumber])
+    //onMount(projectInit);
 
     return (
       <Show when={visible} fallback={<></>}>
         <div class={styles.element} style={{'border-color':currentColor()}}>
-        <img src={smallPreview()} alt="Sound Voltex Exceed Gear"></img>
+        <img src={smallPreview()} style={{'width':'100%', 'height':'100%', 'fill':'fit'}}alt={projectName()}></img>
         <p class={styles.text} style={{'color':currentColor()}}>{projectName()}</p>
           <div class={styles.element2}>
             <p class={styles.text2} style={{'color':secondaryColor()}}>{projectDescription()}</p>
