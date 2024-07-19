@@ -1,0 +1,56 @@
+div > img {
+  width: auto;
+  height : auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.text {
+  position: absolute;
+  bottom: -70px;
+  margin-left: -5px;
+  font-family: pc;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  text-wrap: nowrap;
+  font-weight: bold;
+}
+
+.text2 {
+
+  margin-left: -5px;
+  font-family: pc;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  text-wrap: wrap;
+  font-weight: bold;
+}
+
+
+.element{
+    position: fixed;
+    top : 30%; left : 65%;
+    width: 400px;
+    height : 225px;
+    padding: 3px;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    color: white;
+    font-family: pc;
+    font-size: calc(16px + 2vmin);
+}
+
+.element2{
+  position: fixed;
+  top : 63%; left : 65%;
+  width: 400px;
+  height : 150px;
+  padding: 3px;
+  border-style: transparent;
+  border-color: white;
+  border-width: 3px;
+  color: white;
+  font-family: pc;
+  font-size: calc(16px + 2vmin);
+}
