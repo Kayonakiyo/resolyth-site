@@ -3,31 +3,42 @@ import styles from './Projects.module.css';
 import { style } from 'solid-js/web';
 import ProjectBox from './ProjectBox'
 
+import SDVXVideo from './assets/SDVX_Song.mp4'
+import SDVXLogo from './assets/sdvx_logo.png'
+import SDVXBG from './assets/sdvxbg3.png'
+
+import IIDXVideo from './assets/IIDX_Miami.mp4'
+import IIDXLogo from './assets/BMIIDX_RES.png'
+import IIDXBG from './assets/backbanner_IIDXCOLORS.jpg'
+
+import defaultLogo from './assets/HG2HQ.png'
+import defaultVideo from './assets/gnomed.mp4'
+
 const Projects: Component = () => {
     const [check, setCheck] = createSignal(false);
     const [projectNumber, setProjectNumber] = createSignal(0);
-    const [projectBigLogo, setProjectBigLogo] = createSignal("src/assets/HG2HQ.png");
+    const [projectBigLogo, setProjectBigLogo] = createSignal(defaultLogo);
     const [previewBorderColor, setPreviewBorderColor] = createSignal("#ffffff")
-    const [backgroundImage, setBackgroundImage] = createSignal("src/assests/HG2HQ.png")
-    const [projectVideo, setProjectVideo] = createSignal("src/assets/gnomed.mp4")
+    const [backgroundImage, setBackgroundImage] = createSignal(defaultLogo)
+    const [projectVideo, setProjectVideo] = createSignal(defaultVideo)
 
     createEffect(() => {
       switch(projectNumber()){
         case 0: // SDVX
-          setProjectBigLogo("src/assets/sdvx_logo.png");
+          setProjectBigLogo(SDVXLogo);
           setPreviewBorderColor("#f974b7")
-          setBackgroundImage("url('src/assets/sdvxbg3.png')")
-          setProjectVideo("src/assets/SDVX_Song.mp4")
+          setBackgroundImage(SDVXBG)
+          setProjectVideo(SDVXVideo)
           break;
         case 1: //BMIIDX
-          setProjectBigLogo("src/assets/BMIIDX_RES.png");
+          setProjectBigLogo(IIDXLogo);
           setPreviewBorderColor("#a73baf")
-          setBackgroundImage("url('src/assets/backbanner_IIDXCOLORS.jpg')")
-          setProjectVideo("src/assets/IIDX_Miami.mp4")
+          setBackgroundImage(IIDXBG)
+          setProjectVideo(IIDXVideo)
           break;
         default:
-          setProjectBigLogo("src/assets/HG2HQ.png");
-          setProjectVideo("src/assets/gnomed.mp4")
+          setProjectBigLogo(defaultLogo);
+          setProjectVideo(defaultVideo)
       }
     }, [projectNumber]);
 
@@ -52,7 +63,7 @@ const Projects: Component = () => {
     
     return (
       <Show when={true} fallback={<p>bloopy</p>}>
-        <div class={styles.header} style={{'background-image':backgroundImage()}}id="main">
+        <div class={styles.header} style={{'background-image':`url('` + backgroundImage() + `')`}} id="main">
           <div class={styles.highlight} style={{'border-color':previewBorderColor()}}>
             <img src={projectBigLogo()} style={{'position':'relative','bottom':'-75%'}}/>
             <video autoplay muted loop class={styles.screenvideo} id ="vidz" src={projectVideo()}>
