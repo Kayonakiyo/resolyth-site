@@ -65,6 +65,7 @@ const Projects: Component = () => {
       <Show when={true} fallback={<p>bloopy</p>}>
         <div class={styles.header} style={{'background-image':`url('` + backgroundImage() + `')`}} id="main">
           <div class={styles.highlight} style={{'border-color':previewBorderColor()}}>
+            <a href="MainMenu" style={{'visibility':'hidden', 'width':'100%', 'height':'100%'}}>bloop</a>
             <img src={projectBigLogo()} style={{'position':'relative','bottom':'-75%'}}/>
             <video autoplay muted loop class={styles.screenvideo} id ="vidz" src={projectVideo()}>
             </video>
