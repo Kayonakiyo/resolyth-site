@@ -29,10 +29,10 @@ const ProjectBox: Component<{visibility:String, projectNumber:Number}> = (props)
           smallPreview = SDVXSmallPreview;
           break;
         case 1 :
-          name = "Beatmania IIDX Arcade Controller";
-          color = "#a73baf";
-          color2 = "#5838f3"; 
-          description = "Spin turntables, keep the dance floor hot!"
+          name = "Beatmania IIDX Controller Deck";
+          color = "#d13154";
+          color2 = "#F3A5C5"; 
+          description = "The set is in your hands! Scratch records, keep the beat bumping and party on!"
           smallPreview = IIDXSmallPreview
           break;
         default :
@@ -53,15 +53,11 @@ const ProjectBox: Component<{visibility:String, projectNumber:Number}> = (props)
 
     return (
       <Show when={visible} fallback={<></>}>
-        <div class={styles.element} style={{'border-color':currentColor()}}>
-        <img src={smallPreview()} style={{'width':'100%', 'height':'100%', 'fill':'fit'}}alt={projectName()}></img>
-        <p class={styles.text} style={{'color':currentColor()}}>{projectName()}</p>
-          <div class={styles.element2}>
-            <p class={styles.text2} style={{'color':secondaryColor()}}>{projectDescription()}</p>
+        <div class={styles.projectBoxPreview} style={{'border-color':currentColor()}}> 
+          <div class={styles.projectBoxLogo} style={{'background-image':`url('` + smallPreview() + `')`}}/>
+            <p class={styles.projectTitleText} style={{'color':currentColor()}}>{projectName()}</p>
+            <p class={styles.projectDescriptionText} style={{'color':secondaryColor()}}>{projectDescription()}</p>
           </div>
-        
-        </div>
-        
       </Show>
     
     );

@@ -1,20 +1,22 @@
 import { Component, onMount, createSignal, Show, createEffect } from 'solid-js';
 import styles from './Projects.module.css';
-import { style } from 'solid-js/web';
 import ProjectBox from './ProjectBox'
 
 import SDVXVideo from './assets/SDVX_Song.mp4'
 import SDVXLogo from './assets/sdvx_logo.png'
-import SDVXBG from './assets/sdvxbg3.png'
+import SDVXBG from './assets/sdvxbg33.png'
 
 import IIDXVideo from './assets/IIDX_Miami.mp4'
 import IIDXLogo from './assets/BMIIDX_RES.png'
-import IIDXBG from './assets/backbanner_IIDXCOLORS.jpg'
+import IIDXBG from './assets/backbanner_BMIIDX.png'
 
 import defaultLogo from './assets/HG2HQ.png'
 import defaultVideo from './assets/gnomed.mp4'
 
 const Projects: Component = () => {
+    const viewportWidth = document.documentElement.clientWidth;
+    const viewportHeight = document.documentElement.clientHeight;
+
     const [check, setCheck] = createSignal(false);
     const [projectNumber, setProjectNumber] = createSignal(0);
     const [projectBigLogo, setProjectBigLogo] = createSignal(defaultLogo);
@@ -32,7 +34,7 @@ const Projects: Component = () => {
           break;
         case 1: //BMIIDX
           setProjectBigLogo(IIDXLogo);
-          setPreviewBorderColor("#a73baf")
+          setPreviewBorderColor("#d13154")
           setBackgroundImage(IIDXBG)
           setProjectVideo(IIDXVideo)
           break;
@@ -40,6 +42,8 @@ const Projects: Component = () => {
           setProjectBigLogo(defaultLogo);
           setProjectVideo(defaultVideo)
       }
+      document.getElementsByTagName("body")[0].classList.add(styles.background); // every refresh, change the background element
+      document.getElementsByTagName("body")[0].style.cssText = `background-image: url('${backgroundImage()}')`;
     }, [projectNumber]);
 
     createEffect(() => {
@@ -63,17 +67,13 @@ const Projects: Component = () => {
     
     return (
       <Show when={true} fallback={<p>bloopy</p>}>
-        <div class={styles.header} style={{'background-image':`url('` + backgroundImage() + `')`}} id="main">
-          <div class={styles.highlight} style={{'border-color':previewBorderColor()}}>
-            <a href="MainMenu" style={{'visibility':'hidden', 'width':'100%', 'height':'100%'}}>bloop</a>
-            <img src={projectBigLogo()} style={{'position':'relative','bottom':'-75%'}}/>
-            <video autoplay muted loop class={styles.screenvideo} id ="vidz" src={projectVideo()}>
-            </video>
-          </div>
-            <div class={styles.screen}>
-            <ProjectBox visibility="visible" projectNumber={projectNumber()}/>
-            </div>
+        
+        <div class={styles.bigBoxPreview} style={{'border-color':previewBorderColor()}}>
+          <ProjectBox visibility="visible" projectNumber={projectNumber()}/>
+        <video autoplay muted loop class={styles.bigBoxVideo} src={projectVideo()}/>
+          <div class={styles.bigBoxLogo} style={{'background-image':`url('` + projectBigLogo() + `')`}}/>
         </div>
+        
       </Show>
     
     );

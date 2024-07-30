@@ -3,52 +3,43 @@
     src: url('./assets/pc-9900-v2x.otf');
   }
 
-.header {
+.background {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
-  height : 100vh;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #000; 
-  animation: fdeIn 1.5s linear;
 }
 
-.screen {
-  display: flex;
-  flex-direction: column;
-  align-items: normal;
-  justify-content: left;
-  background-color: #000; 
-}
+.bigBoxPreview {
+  position: relative;
+  top: 25vh;
+  left : 5vw;
+  width: 50vw;
+  height: 50vh;
 
-.screenvideo {
-  position: absolute; 
-  right: 0; 
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-  width: auto; 
-  height: 50vh; 
-  z-index: -100;
-  background-size: cover;
-  overflow: hidden;
-}
-
-.highlight {
-  position: fixed;
-  top : 15%; right : 40%;
-  width: 800px;
-  height : 450px;
-  padding: 0px;
   border-style: solid;
-  border-color: white;
-  border-width: 3px;
-  color: white;
-  font-family: pc;
-  font-size: calc(16px + 2vmin);
+  border-width: 0.5vh;
+
 }
+
+.bigBoxVideo {
+  position: absolute; 
+  width: 100%; 
+  height: 100%; 
+  object-fit: fill;
+}
+
+.bigBoxLogo {
+  position: absolute;
+  top:60%;
+  width: 100%;
+  height: 85%;
+  background-size: contain;
+  background-position: center center; 
+  background-repeat: no-repeat;
+}
+
 
 .text {
   font-family: pc;
@@ -58,19 +49,3 @@
   align-self: center;  
 }
 
-.menuText{
-  font-family: pc;
-  font-size: calc(16px + 2vmin);
-  color: white;
-  background-color: black;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-} 
