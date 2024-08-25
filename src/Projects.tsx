@@ -23,6 +23,7 @@ const Projects: Component = () => {
     const [previewBorderColor, setPreviewBorderColor] = createSignal("#ffffff")
     const [backgroundImage, setBackgroundImage] = createSignal(defaultLogo)
     const [projectVideo, setProjectVideo] = createSignal(defaultVideo)
+    const [projectLink, setProjectLink] = createSignal("MainMenu")
 
     createEffect(() => {
       switch(projectNumber()){
@@ -31,16 +32,19 @@ const Projects: Component = () => {
           setPreviewBorderColor("#f974b7")
           setBackgroundImage(SDVXBG)
           setProjectVideo(SDVXVideo)
+          setProjectLink("/Projects/SDVX")
           break;
         case 1: //BMIIDX
           setProjectBigLogo(IIDXLogo);
           setPreviewBorderColor("#d13154")
           setBackgroundImage(IIDXBG)
           setProjectVideo(IIDXVideo)
+          setProjectLink("/Projects/IIDX")
           break;
         default:
           setProjectBigLogo(defaultLogo);
           setProjectVideo(defaultVideo)
+          setProjectLink("MainMenu")
       }
       document.getElementsByTagName("body")[0].classList.add(styles.background); // every refresh, change the background element
       document.getElementsByTagName("body")[0].style.cssText = `background-image: url('${backgroundImage()}')`;
@@ -63,16 +67,24 @@ const Projects: Component = () => {
       window.addEventListener('keydown', switchProject);
     })
 
-    
+    const changePage = () => {
+      document.getElementsByTagName("body")[0].classList.remove(styles.background); // every refresh, change the background element
+      document.getElementsByTagName("body")[0].style.cssText = ``;
+    }
     
     return (
       <Show when={true} fallback={<p>bloopy</p>}>
         
         <div class={styles.bigBoxPreview} style={{'border-color':previewBorderColor()}}>
+        
           <ProjectBox visibility="visible" projectNumber={projectNumber()}/>
+          <a href={projectLink()} onclick={changePage} style={{'visibility':'visible', 'width':'100%', 'height':'100%'}}>
         <video autoplay muted loop class={styles.bigBoxVideo} src={projectVideo()}/>
+        
           <div class={styles.bigBoxLogo} style={{'background-image':`url('` + projectBigLogo() + `')`}}/>
+          </a>
         </div>
+        
         
       </Show>
     

@@ -25,9 +25,9 @@ const MainMenu: Component = () => {
             <p class={styles.menuText} id="loaded_text">Main Menu</p>
             <div class={styles.screen}>
               <ul class={styles.menuText}>
-                <li><a href="google.com">About Me</a></li>
+                <li><a href="AboutMe">About Me</a></li>
                 <li><a href="Projects">Projects</a></li> 
-                <li>item 3</li> 
+                <li><a href="Resume_CV">Resume / CV</a></li> 
               </ul>
             </div>
           </Show>

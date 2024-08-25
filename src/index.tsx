@@ -6,6 +6,10 @@ import './index.css';
 import App from './App';
 import MainMenu from './MainMenu';
 import Projects from './Projects';
+import SDVX from './SDVX';
+import IIDX from './IIDX';
+import NotFound from './NotFound';
+import AboutMe from './AboutMe';
 
 const root = document.getElementById('root');
 
@@ -23,6 +27,10 @@ render(
       <Route path="/" component={App}/>
       <Route path="MainMenu" component={MainMenu}/>
       <Route path="Projects" component={Projects}/>
+      <Route path="/Projects/SDVX" component={SDVX}/>
+      <Route path="/Projects/IIDX" component={IIDX}/>
+      <Route path="*paramName" component={NotFound} />
+      <Route path="AboutMe" component={AboutMe}/>
     </Router>
   ),
   root!
