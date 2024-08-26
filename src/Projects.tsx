@@ -79,7 +79,7 @@ const Projects: Component = () => {
         
           <ProjectBox visibility="visible" projectNumber={projectNumber()}/>
           <a href={projectLink()} onclick={changePage} style={{'visibility':'visible', 'width':'100%', 'height':'100%'}}>
-        <video autoplay muted loop class={styles.bigBoxVideo} src={projectVideo()}/>
+        <video autoplay muted loop playsinline class={styles.bigBoxVideo} src={projectVideo()}/>
         
           <div class={styles.bigBoxLogo} style={{'background-image':`url('` + projectBigLogo() + `')`}}/>
           </a>
