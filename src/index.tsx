@@ -1,6 +1,6 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
-import { Router, Route } from '@solidjs/router';
+import { Router, Route, HashRouter } from '@solidjs/router';
 
 import './index.css';
 import App from './App';
@@ -23,7 +23,7 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 
 render(
   () => (
-    <Router>
+    <HashRouter>
       <Route path="/" component={App}/>
       <Route path="MainMenu" component={MainMenu}/>
       <Route path="Projects" component={Projects}/>
@@ -31,7 +31,7 @@ render(
       <Route path="/Projects/IIDX" component={IIDX}/>
       <Route path="*paramName" component={NotFound} />
       <Route path="AboutMe" component={AboutMe}/>
-    </Router>
+    </HashRouter>
   ),
   root!
 );
